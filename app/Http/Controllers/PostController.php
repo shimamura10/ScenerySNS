@@ -25,6 +25,13 @@ class PostController extends Controller
         $post->image_path = 'storage/' . $dir . '/' . $file_name; // シンボリックリンク
         $post->save();
         
-        return redirect()->route('posts.index');
+        return redirect()->route('index');
+    }
+    
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        
+        return redirect()->route('index');
     }
 }

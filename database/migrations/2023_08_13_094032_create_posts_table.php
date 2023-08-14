@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('body');
             $table->text('image_path');
+            $table->int('user_id');
             $table->timestamps();
         });
     }
