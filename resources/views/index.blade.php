@@ -25,12 +25,10 @@ function findIconPath($user_id)
 <body>
     <div class="header", style="z-index:10000">
         <h1>Scenery</h1>
-        <div id='search'>
-            <form method="GET" antion='{{ route('index') }}'>
-                @csrf
-                <input type="text" name='target' placeholder="投稿を検索">
-            </form>
-        </div>
+        <form method="GET" antion='{{ route('index') }}'>
+            @csrf
+            <input type="text" name='target' placeholder="投稿を検索">
+        </form>
     </div>
     
     <div class="setting">
@@ -42,35 +40,41 @@ function findIconPath($user_id)
                 <p>123456789</p>
             </div>
         </div>
-        <button>setting</button>
+        <form method="post" action="{{ route('logout') }}">
+            @csrf
+            <button>Log Out</button>
+        </form>
     </div>
 
-    <div class="post_window">
-        <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
-            @csrf
+    <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="post_window">
             <div class=" post_tweet">
                 <img src={{ findIconPath(Auth::user()->id) }}  alt="プロフィール画像">
                 <div class="content">
                     <h2>{{ Auth::user()->name }}</h2>
                     <p></p>
                     <textarea maxlength="120" placeholder="どんな景色ですか?" style="width: 100%; height: 80px;" name="body"></textarea>
-                    <input type="file"  name="image">
-                    <!-- <div class="scene">
-                        <img src="test.jpeg" alt="景色">
-                    </div> -->
+                    <label class="custom-file-input">
+                        <span>画像選択</span>
+                        <input type="file" name="image" id="imageInput">
+                    </label>
+                    <div class="image-preview">
+                        <img id="previewImage" src="#" alt="">
+                    </div>
                 </div>
-                <button>POST</button>
             </div>
+            <button>POST</button>
             <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
-        </form>
-    </div>
+        </div>
+    </form>
     
     <div class="timeline">
         @forelse ($posts as $post)
             <div class='tweet'>
                 <img src={{ findIconPath($post->user_id) }}  alt="アイコン画像">
                 <div class="content">
-                    <h2></h2>
+                    <h2>{{ $users->find($post->user_id)->name }}</h2>
                     <p></p>
                     <p>{{ $post->body }}</p>
                     <div class="scene">
@@ -87,5 +91,6 @@ function findIconPath($user_id)
             <div class='post'>No posts yet!</div>
         @endforelse
     </div>
+    <script src="{{ url('js/script.js') }}"></script>
 </body>
 </html>

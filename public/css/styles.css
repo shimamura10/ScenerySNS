@@ -21,7 +21,7 @@ body {
     font-size: 24px;
 }
 
-.header>input {
+.header input {
     width: 80%;
     padding: 5px;
     border: none;
@@ -51,23 +51,29 @@ body {
 }
 
 .profile>img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
+    object-fit: contain; /* アスペクト比を保ちつつコンテナにフィット */
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .profile h2 {
     margin: 0;
-    font-size: 20px;
+    margin-bottom: 15px;
+    /* margin-bottom: 5%; */
+    text-align: left;
+    font-size: 30px;
 }
 
 .profile p {
-    margin: 10px auto;
+    margin: 5px 0;
+    /* margin-top: 10%; */
     /* font-size: 12px; */
+    text-align: left;
 }
 
-.setting>button {
+.setting button {
     flex-grow: 1;
     width: 20%;
     position: fixed;
@@ -86,7 +92,7 @@ body {
     text-align: center; /* 文字のアライメント */
 }
 
-.setting>button:hover {
+.setting button:hover {
     color: #e1e8ed;
     background-color: #3e9262;
 }
@@ -114,41 +120,42 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .content {
     flex-grow: 1;
-    /* margin-top: 2%; */
 }
 
 .scene img {
-    max-width: 60%;
-    max-height: 60%;
-    margin-right: 5%;
+    width: 100%;
+    height: 100%;
+    /* margin-left: 15%; */
 }
 
 .tweet h2 {
     margin: 0;
     font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .tweet p {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .post_window {
     position: fixed;
+    /* margin-top: 100px; */
     top: 100px;
     width: 35%;
-    height: 100vh;
+    /* height: 100vh; */
+    /* margin-top: 100px; */
     margin-left: 65%;
     background-color: #e7fad9;
 }
 
 .post_tweet {
     background-color: rgb(171, 255, 207);
-    /* border: 1px solid white; */
     margin: 2px;
     padding: 10px;
     display: flex;
@@ -156,33 +163,59 @@ body {
     box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
 }
 
+.custom-file-input {
+    display: inline-block;
+    padding: 4px auto;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.custom-file-input>span {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #29e536;
+    color: black;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-file-input>span:hover {
+    color: #000000;
+    background-color: #1a9c23;
+}
+
+.custom-file-input input[type="file"] {
+    display: none; /* 実際のファイル選択ボタンを非表示にする */
+}
+
+.image-preview img{
+    max-width: 100%;
+    max-height: 59vh;
+    /* max-width: 47vw;
+    max-height:47vh; */
+}
+
 .post_tweet>img {
     width: 35px;
     height: 35px;
+    object-fit: contain; /* アスペクト比を保ちつつコンテナにフィット */
     border-radius: 50%;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 .post_tweet h2 {
     margin: 0;
-    font-size: 16px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 .post_tweet p {
     margin: 10px 0;
     font-size: 12px;
+    margin-left: 10px;
 }
-
-/* .post_tweet>input {
-    width:80%;
-    min-height: 100px;
-    padding: 5px;
-    border: none;
-    border-radius: 20px;
-    margin-top: 10px;
-    display: flex;
-} */
-
 
 .post_window button {
     flex-grow: 1;
@@ -197,7 +230,7 @@ body {
     display: flex; /* ボタンの表示方法 */
     font-size: 26px; /* フォントサイズ */
     font-family: Arial, sans-serif; /* フォント */
-    bottom: 2%;
+    /* bottom: 2%; */
     cursor: default; /* カーソル */
     box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
     border: none;
