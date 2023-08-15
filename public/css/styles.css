@@ -1,0 +1,243 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #2E8B57;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header input {
+    width: 80%;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+
+.setting {
+    position: fixed;
+    top: 100px;
+    width: 20%;
+    height: 100vh;
+    text-align: center;
+    background-color: #e7fad9;
+    /* border: 0px solid #e4ede1; */
+}
+
+.profile {
+    background-color: rgb(222, 255, 139);
+    /* border: 1px solid white; */
+    margin: 2px;
+    padding: 10px;
+    display: flex;
+    border: 1.0px solid rgba(51, 48, 48, 0.2);
+    box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
+}
+
+.profile>img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; /* アスペクト比を保ちつつコンテナにフィット */
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.profile h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    /* margin-bottom: 5%; */
+    text-align: left;
+    font-size: 30px;
+}
+
+.profile p {
+    margin: 5px 0;
+    /* margin-top: 10%; */
+    /* font-size: 12px; */
+    text-align: left;
+}
+
+.setting button {
+    flex-grow: 1;
+    width: 20%;
+    position: fixed;
+    background-color: #56ca88;
+    color: white; /* 文字色 */
+    padding: 2px 16px;
+    text-decoration: none; /* 文字装飾 */
+    display: block; /* ボタンの表示方法 */
+    font-size: 18px; /* フォントサイズ */
+    font-family: Arial, sans-serif; /* フォント */
+    cursor: default; /* カーソル */
+    box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
+    bottom: 2%;
+    border: none;
+    border-radius: 50px; /* 50pxの角丸 */
+    text-align: center; /* 文字のアライメント */
+}
+
+.setting button:hover {
+    color: #e1e8ed;
+    background-color: #3e9262;
+}
+
+.timeline {
+    width: 45%;
+    /* height: 10vh; */
+    background-color: white;
+    margin-top: 100px;
+    margin-left: 20%;
+    border: 0.5px solid #e1e8ed;
+}
+
+.tweet {
+    background-color: rgb(171, 255, 182);
+    /* border: 1px solid white; */
+    margin: 2px;
+    padding: 10px;
+    display: flex;
+    border: 1.0px solid rgba(51, 48, 48, 0.2);
+    box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
+}
+
+.tweet>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.scene img {
+    width: 100%;
+    height: 100%;
+    /* margin-left: 15%; */
+}
+
+.tweet h2 {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.tweet p {
+    margin: 5px 0;
+}
+
+.post_window {
+    position: fixed;
+    /* margin-top: 100px; */
+    top: 100px;
+    width: 35%;
+    /* height: 100vh; */
+    /* margin-top: 100px; */
+    margin-left: 65%;
+    background-color: #e7fad9;
+}
+
+.post_tweet {
+    background-color: rgb(171, 255, 207);
+    margin: 2px;
+    padding: 10px;
+    display: flex;
+    border: 1.0px solid rgba(51, 48, 48, 0.2);
+    box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
+}
+
+.custom-file-input {
+    display: inline-block;
+    padding: 4px auto;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.custom-file-input>span {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: #29e536;
+    color: black;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-file-input>span:hover {
+    color: #000000;
+    background-color: #1a9c23;
+}
+
+.custom-file-input input[type="file"] {
+    display: none; /* 実際のファイル選択ボタンを非表示にする */
+}
+
+.image-preview img{
+    max-width: 100%;
+    max-height: 59vh;
+    /* max-width: 47vw;
+    max-height:47vh; */
+}
+
+.post_tweet>img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain; /* アスペクト比を保ちつつコンテナにフィット */
+    border-radius: 50%;
+    /* margin-right: 10px; */
+}
+
+.post_tweet h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.post_tweet p {
+    margin: 10px 0;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.post_window button {
+    flex-grow: 1;
+    width: 35%;
+    position: fixed;
+    background-color: #34d379;
+    justify-content: center;
+    color: white; /* 文字色 */
+    padding: 4px 32px; /* パディング */
+    text-align: center; /* 文字のアライメント */
+    text-decoration: none; /* 文字装飾 */
+    display: flex; /* ボタンの表示方法 */
+    font-size: 26px; /* フォントサイズ */
+    font-family: Arial, sans-serif; /* フォント */
+    /* bottom: 2%; */
+    cursor: default; /* カーソル */
+    box-shadow: 0px 3px 10px rgba(51, 48, 48, 0.2);
+    border: none;
+    border-radius: 50px; /* 50pxの角丸 */
+}
+
+.post_window button:hover {
+    color: #e1e8ed;
+    background-color: #3e9262;
+}
