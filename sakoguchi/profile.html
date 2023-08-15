@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>プロフィール編集画面</title>
+    
+</head>
+
+<body>
+    <div class="header", style="z-index:10000">
+        <h1>Scenery</h1>
+    </div>
+    
+    <div class="profile-edit-box">
+        <h2>プロフィール編集</h2>
+        <div class="profile-image">
+            <img id="selected-image" src="path_to_image" alt="プロフィール画像" style="width: 100%; height: 100%; border-radius: 50%;">
+            <input type="file" id="image-input" accept="image/*" style="display: none;">
+            <button class="upload-button" id = "upload-button">変更</button>
+            
+        </div>
+        <form action="/profile/edit" method="post">
+            <input type="text" name="username" class="profile-input" placeholder="ユーザー名" required>
+            <input type="email" name="email" class="profile-input" placeholder="メールアドレス" required>
+            <!-- <textarea name="bio" class="profile-input" placeholder="自己紹介" rows="4"></textarea> -->
+            <button type="submit" class="save-button">保存</button>
+        </form>
+    </div>
+
+    
+
+    <div class="profile-edit-box">
+        <h2>パスワード変更</h2>
+        <form action="/password/change" method="post">
+            <input type="password" name="current_password" class="profile-input" placeholder="現在のパスワード" required>
+            <input type="password" name="new_password" class="profile-input" placeholder="新しいパスワード" required>
+            <input type="password" name="confirm_password" class="profile-input" placeholder="新しいパスワードの確認" required>
+            <button type="submit" class="save-button">パスワードを変更</button>
+        </form>
+    </div>
+
+    <div class="profile-edit-box">
+        <h2>アカウント削除</h2>
+        <p>アカウントを削除すると、すべてのデータが永久に失われます。この操作は取り消せません。</p>
+        <form action="/account/delete" method="post">
+            <button type="submit" class="delete-button">アカウントを削除</button>
+        </form>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById("image-input");
+        const selectedImage = document.getElementById("selected-image");
+        const uploadButton = document.getElementById("upload-button");
+
+        uploadButton.addEventListener("click", function () {
+            imageInput.click();
+        });
+
+        imageInput.addEventListener("change", function (event) {
+            const selectedFile = event.target.files[0];
+            if (selectedFile) {
+                const imageUrl = URL.createObjectURL(selectedFile);
+                selectedImage.src = imageUrl;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+

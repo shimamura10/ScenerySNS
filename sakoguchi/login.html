@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>プロフィール編集画面</title>
+</head>
+
+<body>
+    <div class="header", style="z-index:10000">
+        <h1>Scenery</h1>
+    </div>
+
+    <div class="profile-edit-box">
+        <h2>ログイン</h2>
+        <form action="/password/change" method="post">
+            <input type="email" name="email" class="profile-input" placeholder="メールアドレス" required>
+            <input type="password" name="current_password" class="profile-input" placeholder="パスワード" required>
+            <button type="submit" class="save-button">ログイン</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
