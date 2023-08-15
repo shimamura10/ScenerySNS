@@ -34,6 +34,7 @@ class PostController extends Controller
         $post = new Post();
         $post->body = $request->body;
         $post->image_path = 'storage/' . $dir . '/' . $file_name; // シンボリックリンク
+        $post->user_id = $request->user_id;
         $post->save();
         
         return redirect()->route('index');
