@@ -8,11 +8,27 @@
 </head>
 <body>
     <h1>ScenerySNS</h1>
+    
+    <div id='search'>
+        <form method="GET" antion='{{ route('index') }}'>
+            @csrf
+            <input type="text" name='target'>
+        </form>
+    </div>
+    
     <div id='setting'>
         <h2>Setting</h2>
+        <?php $file_path = 'storage/icons/' . Auth::user()->id; ?>
+        @if (file_exists($file_path . '.jpg'))
+            <img src={{ $file_path . '.jpg' }}>
+        @elseif (file_exists($file_path . '.png'))
+            <img src={{ $file_path . '.png' }}>
+        @endif
         <p>ユーザー名：{{ Auth::user()->name }}</p>
     </div>
+    
     <div id='post-window'>
+        <h2>投稿フォーム</h2>
         <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
             @csrf
             <input type="file" name="image">
@@ -20,7 +36,9 @@
             <button>アップロード</button>
         </form>
     </div>
+    
     <div id='timeline'>
+        <h2>Timeline</h2>
         @forelse ($posts as $post)
             <div class='post'>
                 <p>{{ $post->body }}</p>
@@ -30,8 +48,6 @@
                     @csrf
                     <button>[x]</button>
                 </form>
-                <!--<p>{{ asset($post->iamge_path) }}</p>-->
-                <!--<p>{{ $post->iamge_path }}</p>-->
             </div>
         @empty
             <div class='post'>No posts yet!</div>

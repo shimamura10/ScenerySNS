@@ -7,9 +7,21 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post, Request $request)
     {
-        $posts = $post->orderBy('updated_at', 'DESC')->limit(10)->get();
+        if (!empty($request->target)) {
+            $posts = $post->orderBy('updated_at', 'DESC')->whereRaw('MATCH(body) AGAINST(? IN BOOLEAN MODE)', [$request->target])->limit(10)->get();
+        } else {
+            $posts = $post->orderBy('updated_at', 'DESC')->limit(10)->get();
+        }
+        // dd($posts);
+        return view('index')->with(['posts' => $posts]);
+    }
+    
+    public function search(Post $post, Request $request)
+    {
+        $posts = $post->orderBy('updated_at', 'ASC')->whereRaw('MATCH(body) AGAINST(? IN BOOLEAN MODE)', [$request->target])->limit(10)->get();
+        dd($posts);
         return view('index')->with(['posts' => $posts]);
     }
     
@@ -17,7 +29,6 @@ class PostController extends Controller
     {
         $dir = "images";
         $file_name = $request->file('image')->getClientOriginalName();
-        $image_path = 
         $request->file('image')->storeAs('public/' . $dir, $file_name);
         
         $post = new Post();

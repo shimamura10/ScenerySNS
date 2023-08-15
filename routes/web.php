@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
+    Route::get('/search', 'search')->name('search');
     Route::post('/store', 'store')->name('store');
     Route::delete('/{post}/destroy', 'destroy')->name('destroy');
 });

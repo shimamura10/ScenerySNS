@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'icon' => ['image','mimes:png,jpg','max:1024'],
         ]);
 
         $user = User::create([
@@ -43,6 +44,11 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        
+        // iconの保存
+        $dir = "icons";
+        $icon_extension = $request->file('icon')->getClientOriginalExtension();
+        $request->file('icon')->storeAs('public/' . $dir, $user->id . '.' . $icon_extension);
 
         Auth::login($user);
 
